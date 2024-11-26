@@ -9,11 +9,16 @@ emailInput.insertAdjacentElement("afterend", emailMessage)
 const passwordMessage = document.createElement("p")
 passwordInput.insertAdjacentElement("afterend", passwordMessage)
 
+const successMessage = document.createElement("p");
+  successMessage.style.color = "green";
+  form.appendChild(successMessage);
+
 emailInput.addEventListener("input", () => {
     const emailValue = emailInput.value
     if(emailValue.length > 3 && emailValue.includes("@") && emailValue.includes(".")) {
         emailMessage.style.color = "green"
         emailMessage.textContent = "Email looks good!"
+        checkFormValidity()
     }
     else 
     {
@@ -28,13 +33,26 @@ passwordInput.addEventListener("input", () => {
     {
         passwordMessage.style.color = "green"
         passwordMessage.textContent = "Password looks good!";
+        checkFormValidity()
     }
     else
     {
         passwordMessage.style.color = "red"
         passwordMessage.textContent = "Password must be more than 8 characters."
+        successMessage.textContent = ""
     }
 })
+
+function checkFormValidity() {
+    const emailValid = emailMessage.style.color === "green";
+    const passwordValid = passwordMessage.style.color === "green";
+
+    if (emailValid && passwordValid) {
+        passwordMessage.textContent = ""
+        emailMessage.textContent = ""
+        successMessage.textContent = "Good to go!";
+    }
+  }
 
 form.addEventListener("submit", (event) => {
     event.preventDefault()
