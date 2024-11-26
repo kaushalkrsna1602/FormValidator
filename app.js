@@ -70,6 +70,7 @@ form.addEventListener("submit", (event) => {
             passwordInput.value = ""
             emailMessage.textContent = ""
             passwordMessage.textContent = ""
+            successMessage.textContent = "";
         }
         else{
             alert("Signup failed. Please fix the errors and try again.")
