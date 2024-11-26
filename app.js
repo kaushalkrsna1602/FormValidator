@@ -29,7 +29,7 @@ emailInput.addEventListener("input", () => {
 
 passwordInput.addEventListener("input", () => {
     const passwordValue = passwordInput.value
-    if(passwordValue.length > 8)
+    if(passwordValue.length >= 8)
     {
         passwordMessage.style.color = "green"
         passwordMessage.textContent = "Password looks good!";
